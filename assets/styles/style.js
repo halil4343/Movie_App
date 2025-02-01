@@ -5,6 +5,7 @@ export const Container = styled.View`
   flex: 1;
   background-color: #4d0239;
   padding: 16px;
+  justify-content: center;
 `;
 
 export const CenteredView = styled.View`

@@ -16,11 +16,6 @@ import {
 } from '../../assets/styles/style'; 
 
 
-const ButtonWrapper = styled.View`
-  height: 10%; /* Fixed height to prevent repositioning */
-  justify-content: center;
-  align-items: center;
-`;
 const Login = () => {
   return (
     <SafeAreaProvider>
@@ -37,9 +32,8 @@ const Login = () => {
             <Label>Password</Label>
             <Input secureTextEntry placeholderTextColor="#666" />
           </InputContainer>
-          <ButtonWrapper>
-            <CustomButton title="Sign In" href="/(tabs)/homeScreen" width="80%" margin="10px" />
-            </ButtonWrapper>
+        
+            <CustomButton title="Sign In" href="/(tabs)/homeScreen" width="80%" margin="1px" />
           <FooterText>
             Don't have an account?{' '}
             <FooterLink href="/signup">Sign up</FooterLink>

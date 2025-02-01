@@ -1,39 +1,36 @@
-import { View, Text, Pressable } from 'react-native';
+import { View, Text, Pressable, ScrollView } from 'react-native';
 import React, { useState } from 'react';
 import { Link, useNavigation } from 'expo-router';
 import styled from 'styled-components/native';
 import CustomButton from '../components/customButton';
-const primary = "#7dff50"
-const secondary = "#fc0054"
-const Container = styled.View`
-  flex: 1;
-  justify-content: center;
-  align-items: center;
-  background-color: white;
-`;
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+import {
+  Container,
+  CenteredView,
+  Title,
+  InputContainer,
+  Label,
+  Input,
+  FooterText,
+  FooterLink
+} from '../assets/styles/style'; 
 
-const Title = styled.Text`
-  font-size: 24px;
-  font-weight: bold;
-  color: black;
-`;
 
-const ButtonWrapper = styled.View`
-  height: 10%; /* Fixed height to prevent repositioning */
-  justify-content: center;
-  align-items: center;
-`;
 
 const Onboarding = () => {
   const [isPressed, setIsPressed] = useState(false);
 
   return (
-    <Container>
-      <Title>Welcome to M-Series</Title>
-      <ButtonWrapper>
-        <CustomButton title="Get Started" href="(auth)/login"/>
-      </ButtonWrapper>
-    </Container>
+    <SafeAreaProvider>
+        <ScrollView contentContainerStyle={{ flexGrow: 1, justifyContent: 'center' }}>
+            <Container>
+              <CenteredView>
+                <Title>Welcome to M-Series</Title>
+              </CenteredView>
+                  <CustomButton title="Get Started" href="(auth)/login" width="85%"/>
+            </Container>
+      </ScrollView>
+    </SafeAreaProvider>
   );
 };
 
