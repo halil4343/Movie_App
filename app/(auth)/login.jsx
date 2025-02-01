@@ -1,59 +1,30 @@
-// filepath: /c:/Users/Ozerh/Desktop/Software Develpment/m-series/m-series/app/(auth)/login.jsx
-import { View, Text, ScrollView, TextInput } from 'react-native';
 import React from 'react';
+import { View, Text, ScrollView, TextInput } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { Link } from 'expo-router';
 import styled from 'styled-components/native';
+import CustomButton from '../../components/customButton';
+import {
+  Container,
+  CenteredView,
+  Title,
+  InputContainer,
+  Label,
+  Input,
+  FooterText,
+  FooterLink
+} from '../../assets/styles/style'; 
 
-const Container = styled.View`
-  flex: 1;
-  background-color: black;
-  padding: 16px;
-`;
 
-const CenteredView = styled.View`
-  align-items: center;
+const ButtonWrapper = styled.View`
+  height: 10%; /* Fixed height to prevent repositioning */
   justify-content: center;
-  padding-top: 40px;
-  padding-bottom: 40px;
+  align-items: center;
 `;
-
-const Title = styled.Text`
-  font-size: 24px;
-  font-weight: bold;
-  color: white;
-`;
-
-const InputContainer = styled.View`
-  margin-bottom: 16px;
-`;
-
-const Label = styled.Text`
-  color: white;
-  margin-bottom: 8px;
-`;
-
-const Input = styled.TextInput`
-  background-color: #333;
-  color: white;
-  padding: 16px;
-  border-radius: 8px;
-`;
-
-const FooterText = styled.Text`
-  color: white;
-  text-align: center;
-  margin-top: 24px;
-`;
-
-const FooterLink = styled(Link)`
-  color: blue;
-`;
-
 const Login = () => {
   return (
     <SafeAreaProvider>
-      <ScrollView>
+      <ScrollView contentContainerStyle={{ flexGrow: 1, justifyContent: 'center' }}>
         <Container>
           <CenteredView>
             <Title>Sign In to M-Series</Title>
@@ -66,6 +37,9 @@ const Login = () => {
             <Label>Password</Label>
             <Input secureTextEntry placeholderTextColor="#666" />
           </InputContainer>
+          <ButtonWrapper>
+            <CustomButton title="Sign In" href="/(tabs)/homeScreen" width="80%" margin="10px" />
+            </ButtonWrapper>
           <FooterText>
             Don't have an account?{' '}
             <FooterLink href="/signup">Sign up</FooterLink>

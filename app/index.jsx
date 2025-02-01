@@ -1,8 +1,8 @@
 import { View, Text, Pressable } from 'react-native';
 import React, { useState } from 'react';
-import { useNavigation } from 'expo-router';
+import { Link, useNavigation } from 'expo-router';
 import styled from 'styled-components/native';
-
+import CustomButton from '../components/customButton';
 const primary = "#7dff50"
 const secondary = "#fc0054"
 const Container = styled.View`
@@ -18,40 +18,21 @@ const Title = styled.Text`
   color: black;
 `;
 
-const StyledButton = styled(Pressable)`
-  background-color: ${props => (props.pressed ? primary : '#9dff80')};
-  padding: ${props => (props.pressed ? '15px 30px' : '10px 20px')};
-  border-radius: 20px; /* Increased border-radius for a more rounded border */
-  border-width : 2px;
-  border-color : ${secondary};
-  margin-top: 20px;
-`;
-
-const ButtonText = styled.Text`
-  color: ${secondary};
-  font-size: 16px;
-  font-weight: bold;
+const ButtonWrapper = styled.View`
+  height: 10%; /* Fixed height to prevent repositioning */
+  justify-content: center;
+  align-items: center;
 `;
 
 const Onboarding = () => {
-  const navigation = useNavigation();
   const [isPressed, setIsPressed] = useState(false);
-
-  const handleGetStarted = () => {
-    navigation.navigate('(tabs)/homeScreen');
-  };
 
   return (
     <Container>
       <Title>Welcome to M-Series</Title>
-      <StyledButton
-        onPressIn={() => setIsPressed(true)}
-        onPressOut={() => setIsPressed(false)}
-        pressed={isPressed}
-        onPress={handleGetStarted}
-      >
-        <ButtonText>Get Started</ButtonText>
-      </StyledButton>
+      <ButtonWrapper>
+        <CustomButton title="Get Started" href="(auth)/login"/>
+      </ButtonWrapper>
     </Container>
   );
 };
