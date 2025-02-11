@@ -1,8 +1,9 @@
 import React from 'react';
 import { View, Text, ScrollView, TextInput } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
-import { Link } from 'expo-router';
+import { Link, useRouter } from 'expo-router';
 import CustomButton from '../../components/customButton';
+import { useGlobalContext } from '../../components/GlobalProvider';
 import {
   Container,
   CenteredView,
@@ -14,8 +15,17 @@ import {
   FooterLink
 } from '../../assets/styles/style'; 
 
-
 const Login = () => {
+  const { userLogin } = useGlobalContext();
+  const router = useRouter();
+
+  const handleLogin = async () => {
+    const result = await userLogin();
+    if (result) {
+      router.push('/homeScreen');
+    }
+  };
+
   return (
     <SafeAreaProvider>
       <ScrollView contentContainerStyle={{ flexGrow: 1, justifyContent: 'center' }}>
@@ -32,7 +42,7 @@ const Login = () => {
             <Input secureTextEntry placeholderTextColor="#666" />
           </InputContainer>
         
-            <CustomButton title="Sign In" href="/(tabs)/homeScreen" width="80%" margin="1px" />
+          <CustomButton title="Sign In" onPress={handleLogin} width="80%" margin="1px" />
           <FooterText>
             Don't have an account?{' '}
             <FooterLink href="/signup">Sign up</FooterLink>

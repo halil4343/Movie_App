@@ -1,7 +1,6 @@
 import { View, Text, Pressable, ScrollView } from 'react-native';
 import React, { useState } from 'react';
-import { Link, useNavigation } from 'expo-router';
-import styled from 'styled-components/native';
+import { Link } from 'expo-router';
 import CustomButton from '../components/customButton';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import {
@@ -13,9 +12,7 @@ import {
   Input,
   FooterText,
   FooterLink
-} from '../assets/styles/style'; 
-
-
+} from '../assets/styles/style';
 
 const Onboarding = () => {
   const [isPressed, setIsPressed] = useState(false);
@@ -27,7 +24,9 @@ const Onboarding = () => {
               <CenteredView>
                 <Title>Welcome to M-Series</Title>
               </CenteredView>
-                  <CustomButton title="Get Started" href="(auth)/login" width="85%"/>
+              <Link href="(auth)/login" asChild>
+                <CustomButton title="Get Started" width="85%"/>
+              </Link>
             </Container>
       </ScrollView>
     </SafeAreaProvider>

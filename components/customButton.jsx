@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 import { Pressable, Text } from 'react-native';
 import styled from 'styled-components/native';
 import { Link } from 'expo-router';
@@ -28,25 +28,34 @@ const ButtonText = styled(Text)`
   align-self: center;
 `;
 
-const CustomButton = ({ onPress, title, href, width, margin }) => {
+const CustomButton = forwardRef(({ onPress, title, href, width, margin }, ref) => {
   const [isPressed, setIsPressed] = React.useState(false);
+
+  const buttonContent = (
+    <StyledButton
+      ref={ref}
+      onPressIn={() => setIsPressed(true)}
+      onPressOut={() => setIsPressed(false)}
+      pressed={isPressed}
+      onPress={onPress}
+      width={width}
+      margin={margin}
+    >
+      <ButtonText>{title}</ButtonText>
+    </StyledButton>
+  );
 
   return (
     <ButtonContainer>
+      {href ? (
         <Link href={href} asChild>
-        <StyledButton
-            onPressIn={() => setIsPressed(true)}
-            onPressOut={() => setIsPressed(false)}
-            pressed={isPressed}
-            onPress={onPress}
-            width={width}
-            margin={margin}
-        >
-            <ButtonText>{title}</ButtonText>
-        </StyledButton>
+          {buttonContent}
         </Link>
+      ) : (
+        buttonContent
+      )}
     </ButtonContainer>
   );
-};
+});
 
 export default CustomButton;
