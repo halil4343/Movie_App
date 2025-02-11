@@ -2,7 +2,6 @@ import React from 'react';
 import { View, Text, ScrollView, TextInput } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { Link } from 'expo-router';
-import styled from 'styled-components/native';
 import CustomButton from '../../components/customButton';
 import {
   Container,
